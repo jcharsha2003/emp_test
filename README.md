@@ -5,4 +5,4 @@
 ### **Step 4**: Second half of the terminal should have : npm install 
 ### **Step 5**: In first terminal where current directory is client you should give : npm start 
 ### **Step 6**: In second terminal where current directory is server, we took http server as app.js : nodemon app.js 
-8-)
+## 8- )
