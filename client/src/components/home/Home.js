@@ -5,8 +5,8 @@ function Home() {
 
   return (
     
-    <div className='text-center'>
-       home
+    <div className='text-center text-white display-6 '>
+       Welcome 
     </div>
   )
 }

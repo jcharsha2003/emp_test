@@ -1,6 +1,11 @@
 
 const exp = require("express");
 const app = exp();
+const cors=require("cors");
+app.use(cors());
+
+app.use(cors({ origin: true }));
+app.use(exp.json());
 app.listen(5000, () => {
   console.log("server is listening in port 5000");
 });
