@@ -7,3 +7,6 @@
 ### **Step 5**: In first terminal current directory is in client ,type command : npm start 
 ### **Step 6**: In second terminal current directory is server, we took http server as app.js ,type command: nodemon app.js 
 # 8-)
+### admin as default in data base username and password are given below
+### **username**:chandu
+### **passwword**:chandu
