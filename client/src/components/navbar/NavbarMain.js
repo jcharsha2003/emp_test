@@ -78,15 +78,7 @@ function NavbarMain(props) {
                       Employees
                     </Link>
                   </li>
-                  <li className="nav-item dropdown">
-                    <Link
-                      className="nav-link text-white"
-                      style={{ padding: "1.3rem" }}
-                      to="/removed-users" onClick={()=>props.background("rm-emp")}
-                    >
-                      Removed Employees
-                    </Link>
-                  </li>
+ 
                 </ul>
               ) : (
                 userLoginStatus && (

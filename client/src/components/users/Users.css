@@ -196,45 +196,14 @@ thead th.active,tbody td.active {
     transform: translate(-50%, -50%);
   } */
   
-  .al{
-    display: block;
-    width: 170px;
-    height: 34px;
-    line-height: 34px;
-    font-size:18px;
-    font-family: sans-serif;
-    text-decoration: none;
-    color: #333;
-    border: 2px solid #333;
-    letter-spacing: 2px;
-    text-align: center;
-    position: relative;
-    transition: all .35s;
-  }
+ 
   
   .spanl{
     position: relative;
     z-index: 2;
   }
   
-  .al:after{
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: #725b93;
-    transition: all .35s;
-  }
-  
-  .al:hover{
-    color: #fff;
-  }
-  
-  .al:hover:after{
-    width: 100%;
-  }
+
   .alr{
     display: block;
     width: 170px;

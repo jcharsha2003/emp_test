@@ -28,7 +28,7 @@ function Login() {
   return (
   <div className="login">
  
-      {error?.length !== 0 && <p className="text-danger display-1"> {error}</p>}
+      {error?.length !== 0 && <p className="text-danger"> `*{error}`</p>}
       <div className="cad">
       <Tilt className="bg-transparent p-0 text-white border-0 rounded-0 lh-0 shadow-none d-block m-auto">
     <div className="cat" >

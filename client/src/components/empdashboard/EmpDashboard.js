@@ -2,7 +2,7 @@ import React from 'react'
 
 const EmpDashboard = () => {
   return (
-    <div>EmpDashboard</div>
+    <div className='text-white'>EmpDashboard</div>
   )
 }
 

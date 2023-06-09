@@ -49,11 +49,11 @@ userapp.put("/update-user",verifytoken,expressAsyncHandler(async(request,respons
       response.status(200).send({message:"user has been modified successfully"})
     
   }))
-userapp.delete("/delete-user/:id",verifytoken,expressAsyncHandler(async(request,response)=>{
+userapp.delete("/delete-user/:username",verifytoken,expressAsyncHandler(async(request,response)=>{
    
     // get userCollection
    const userCollection=request.app.get("userCollection")
-     await userCollection.deleteOne({id:(+request.params.id)})
+     await userCollection.deleteOne({username:request.params.username})
     
       response.status(200).send({message:"user has been deleted successfully"})
    
@@ -118,5 +118,9 @@ userapp.post('/user-login',expressAsyncHandler(async(request,response)=>{
   }
  
 }))
+
+
+
+
 
 module.exports=userapp
