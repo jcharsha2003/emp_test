@@ -5,15 +5,16 @@ import Navbar from "react-bootstrap/Navbar";
 import { loginContext } from "../../context/loginContext";
 import "./NavbarMain.css";
 import { Link } from "react-router-dom";
-function NavbarMain(props) {
+function NavbarMain() {
   let [currentUser, error, userLoginStatus, loginUser, logoutUser, role] =
     useContext(loginContext);
 
   return (
-    <Navbar  expand="lg" className="p-0 body">
+    <Navbar expand="lg" className="p-0 body">
       <div className="container-fluid px-3 body1">
         <div>
-          <Link className="nav-link" to="/" onClick={()=>props.background("home")}>
+          <Link className="nav-link" to="/">
+            {" "}
             <img
               src="https://cdn-icons-png.flaticon.com/512/6491/6491579.png"
               width="55px"
@@ -29,7 +30,7 @@ function NavbarMain(props) {
                 <Link
                   className="nav-link text-white "
                   style={{ padding: "1.3rem" }}
-                  to="/" onClick={()=>props.background("home")}
+                  to="/"
                 >
                   Home
                 </Link>
@@ -40,7 +41,7 @@ function NavbarMain(props) {
                   <Link
                     className="nav-link text-white  "
                     style={{ padding: "1.3rem" }}
-                    to="/login" onClick={()=>props.background("home")}
+                    to="/login"
                   >
                     Login
                   </Link>
@@ -51,7 +52,7 @@ function NavbarMain(props) {
                     className="nav-link text-white"
                     style={{ padding: "1.3rem" }}
                     to="/login"
-                    onClick={logoutUser} 
+                    onClick={logoutUser}
                   >
                     LogOut
                   </Link>
@@ -64,7 +65,7 @@ function NavbarMain(props) {
                     <Link
                       className="nav-link text-white"
                       style={{ padding: "1.3rem" }}
-                      to="/add-user" onClick={()=>props.background("add-emp")}
+                      to="/add-user"
                     >
                       Add Employees
                     </Link>
@@ -73,12 +74,11 @@ function NavbarMain(props) {
                     <Link
                       className="nav-link text-white"
                       style={{ padding: "1.3rem" }}
-                      to="/users" onClick={()=>props.background("emps")}
+                      to="/users"
                     >
                       Employees
                     </Link>
                   </li>
- 
                 </ul>
               ) : (
                 userLoginStatus && (
@@ -87,7 +87,7 @@ function NavbarMain(props) {
                       <Link
                         className="nav-link text-white"
                         style={{ padding: "1.3rem" }}
-                        to="/emp-dashboard" onClick={()=>props.background("emp")}
+                        to="/emp-dashboard"
                       >
                         Dashboard
                       </Link>

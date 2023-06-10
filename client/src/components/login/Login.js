@@ -26,11 +26,11 @@ function Login() {
     }
   }, [userLoginStatus]);
   return (
-  <div className="login">
+  <div className="Login">
  
       {error?.length !== 0 && <p className="text-danger"> `*{error}`</p>}
-      <div className="cad">
-      <Tilt className="bg-transparent p-0 text-white border-0 rounded-0 lh-0 shadow-none d-block m-auto">
+     
+      <Tilt className="bg-transparent p-0 text-white border-0 rounded-0 lh-0 shadow-none d-block m-auto mt-5">
     <div className="cat" >
     <h2 className="title">Login</h2>
     <form onSubmit={handleSubmit(handleUserLogin)} action="">
@@ -93,7 +93,7 @@ function Login() {
   </form>
     </div>
     </Tilt>
-      </div>
+      
     
 
    

@@ -70,10 +70,10 @@ const Users = () => {
   }, []);
 
   return (
-    <div className="users">
+    <div className="users ">
       {error?.length !== 0 && <p className="text-danger display-1"> {error}</p>}
 
-      <main className="table">
+      <main className="table d-block m-auto mt-5">
         <section className="table__header text-center">
           <h1 className="d-block m-auto">Employees</h1>
         </section>

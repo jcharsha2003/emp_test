@@ -18,15 +18,7 @@ Code written by:
 }
 
 .users {
-    height: 100vh;
-    background: url(../../images/img2.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
 }
 
 main.table {
