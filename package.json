@@ -4,13 +4,13 @@
   "description": "husky",
   "main": "index.js",
   "dependencies": {
+    "markdown-it-emoji": "^2.0.2",
     "prettier": "^2.8.8"
   },
   "devDependencies": {
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jcharsha2003/emp2.git"
@@ -21,13 +21,13 @@
     "url": "https://github.com/jcharsha2003/emp2/issues"
   },
   "homepage": "https://github.com/jcharsha2003/emp2#readme",
-  "husky":{
-  "hooks":{
-    "pre-commit":"lint-staged"
-  }
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
-  "lint-staged":{
-    "*.{js,json,css,md,html}":[
+  "lint-staged": {
+    "*.{js,json,css,md,html}": [
       "prettier --single-quote --write",
       "git add"
     ]
