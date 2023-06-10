@@ -22,3 +22,10 @@
   background-size: cover;
   background-attachment: fixed;
 }
+.emp{
+  background-image: url(../../images/img9.avif);
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
