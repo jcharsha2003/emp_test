@@ -10,7 +10,7 @@ function NavbarMain() {
     useContext(loginContext);
 
   return (
-    <Navbar expand="lg" className="p-0 body">
+    <Navbar expand="lg" className="p-0 body text-white">
       <div className="container-fluid px-3 body1">
         <div>
           <Link className="nav-link" to="/">
@@ -90,6 +90,15 @@ function NavbarMain() {
                         to="/emp-dashboard"
                       >
                         Dashboard
+                      </Link>
+                    </li>
+                    <li className="nav-item dropdown">
+                      <Link
+                        className="nav-link text-white"
+                        style={{ padding: "1.3rem" }}
+                        to="/add-task"
+                      >
+                        Add Task
                       </Link>
                     </li>
                   </ul>

@@ -8,7 +8,7 @@ import Login from "./components/login/Login";
 import ErrorPage from "./components/errorpage/ErrorPage"
 import AddUser from "./components/adduser/AddUser";
 import Users from "./components/users/Users";
-
+import AddTask from "./components/addtask/AddTask";
 import EmpDashboard from "./components/empdashboard/EmpDashboard";
 
 function App() {
@@ -42,6 +42,10 @@ function App() {
         {
           path:"/emp-dashboard",
           element:<EmpDashboard/>
+        },
+        {
+          path:"/add-task",
+          element:<AddTask/>
         }
 
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import NavbarMain from "../navbar/NavbarMain";
-import Footer from "../footer/Footer";
+
 import "./RootLayout.css";
 import { Outlet,useLocation } from "react-router-dom";
 import { useState } from "react";
@@ -24,7 +24,10 @@ function RootLayout() {
     <div
       className={path}
     >
+      <div className="head">
       <NavbarMain/>
+      </div>
+      
 
       {/* placeholder */}
       <div className="main">

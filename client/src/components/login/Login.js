@@ -26,11 +26,11 @@ function Login() {
     }
   }, [userLoginStatus]);
   return (
-  <div className="Login">
+  <div className="Login container">
  
-      {error?.length !== 0 && <p className="text-danger"> `*{error}`</p>}
+ {error?.length !== 0 && <p className="text-danger display-1"> {error}</p>}
      
-      <Tilt className="bg-transparent p-0 text-white border-0 rounded-0 lh-0 shadow-none d-block m-auto mt-5">
+      <Tilt className="bg-transparent p-0 text-white border-0 rounded-0 lh-0 shadow-none d-bolck m-auto mt-5" style={{width:"350px"}}>
     <div className="cat" >
     <h2 className="title">Login</h2>
     <form onSubmit={handleSubmit(handleUserLogin)} action="">

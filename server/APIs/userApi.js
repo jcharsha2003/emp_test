@@ -7,7 +7,7 @@ const jwt=require("jsonwebtoken")
 const verifytoken=require("./middlewares/verifyToken")
 
 //creating a user api 
-let users=[]
+
 userapp.get("/get-users",verifytoken,expressAsyncHandler(async(request,response)=>{
     // get usercollection
     const userCollection=request.app.get("userCollection")
@@ -40,13 +40,13 @@ userapp.post("/create-user",verifytoken,expressAsyncHandler(async(request,respon
   
   }))
 
-userapp.put("/update-user",verifytoken,expressAsyncHandler(async(request,response)=>{
+userapp.put("/update-task/:username",verifytoken,expressAsyncHandler(async(request,response)=>{
  
     // get userCollection
     const userCollection=request.app.get("userCollection")
-    let modifieduser=request.body;
-     await userCollection.updateOne({username:modifieduser.username},{$set:{...modifieduser}})
-      response.status(200).send({message:"user has been modified successfully"})
+    let task=request.body;
+     await userCollection.updateOne({username:(request.params.username)},{$addToSet:{tasks:task}})
+      response.status(200).send({message:"task has been added successfully"})
     
   }))
 userapp.delete("/delete-user/:username",verifytoken,expressAsyncHandler(async(request,response)=>{
@@ -68,8 +68,12 @@ userapp.post("/add-user",expressAsyncHandler(async(request,response)=>{
       const newUser=request.body
 
       const userOfDB=await userCollection.findOne({username:newUser.username})
+      const userOfEmail=await userCollection.findOne({email:newUser.email})
          if(userOfDB!==null){
           response.status(200).send({message:"user already exists"})
+         }
+         else if(userOfEmail!==null){
+          response.status(200).send({message:"user email already exists"})
          }
          else{
           let hashedPassword= await bcryptjs.hash(newUser.password,6)

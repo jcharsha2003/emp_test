@@ -28,13 +28,14 @@ mclient
     // access user database
     let usersdbObj = dbRef.db("usersdb");
     let userCollection = usersdbObj.collection("usercollection");
-
+    
 
 
     console.log("connected to DB successfully");
 
     // share collections objects to APIs
     app.set("userCollection", userCollection);
+    
     
   })
   .catch((err) => console.log("database connection err is", err));
