@@ -61,15 +61,16 @@ const Graphs = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 graph">
       <div className="row">
         <div className="col-md-6">
           <div className="text-white">
-            <div className="d-block m-auto">
+            <div className="d-flex justify-content-center">
               <label htmlFor="date" className="text-white fs-5 px-3">
                 Choose your current date:
               </label>
               <input
+             
                 type="date"
                 id="date"
                 min={tasks?.jod}
@@ -91,11 +92,11 @@ const Graphs = () => {
             </div>
 
             {selectedDate && (
-              <div>
-                <h2 className="d-block m-auto">PieChart for {formatDate(selectedDate)}</h2>
+              <div className="pie my-3">
+                <h2 className="text-center">PieChart for {formatDate(selectedDate)}</h2>
                 {filteredTasks?.length > 0 ? (
                   <React.Fragment>
-                    <div className="container-fluid mb-3 text-white">
+                    <div className="container-fluid mb-3 text-white d-flex justify-content-center">
                      
                       <Chart
                         type="pie"
@@ -121,7 +122,7 @@ const Graphs = () => {
 
         <div className="col-md-6">
           <div className="text-white">
-            <div className="d-block m-auto">
+            <div className="d-flex justify-content-center">
               <label htmlFor="previousDate" className="text-white fs-5 px-3">
                 Choose previous date:
               </label>
@@ -147,11 +148,11 @@ const Graphs = () => {
             </div>
 
             {previousDate && (
-              <div>
-                <h2 className="d-block m-auto">PieChart for {formatDate(previousDate)}</h2>
+              <div className="pie my-3">
+                <h2 className="text-center">PieChart for {formatDate(previousDate)}</h2>
                 {previousFilteredTasks?.length > 0 ? (
                   <React.Fragment>
-                    <div className="container-fluid mb-3">
+                    <div className="container-fluid mb-3 d-flex justify-content-center">
                       
                       <Chart
                         type="pie"
@@ -163,7 +164,7 @@ const Graphs = () => {
                           previousFilteredTasks.filter((task) => task.taskType === "meeting").length,
                         ]}
                         options={{
-                          title: { text: "Tasks PieChart" },
+                          
                           noData: { text: "Empty Data" },
                           labels: ["Working", "Not Working", "Meeting"],
                         }}
