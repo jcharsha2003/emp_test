@@ -6,7 +6,7 @@ import { useState, useEffect, useContext } from "react";
 
 import "./AddTask.css";
 import { useForm } from "react-hook-form";
-
+import TaskList from "../taskslist/TaskList";
 const AddTask = () => {
   let [alert, setAlert] = useState("");
   let today = new Date();
@@ -204,35 +204,7 @@ const AddTask = () => {
     }
   };
 
-  // table related states
-  const [selectedDate, setSelectedDate] = useState("");
-  const [availableDates, setAvailableDates] = useState([]);
-  const [filteredTasks, setFilteredTasks] = useState([]);
 
-  useEffect(() => {
-    // Extract available dates from tasks and update state
-    const dates = tasks?.tasks?.map((task) => task.date);
-    setAvailableDates(dates);
-  }, [tasks]);
-
-  useEffect(() => {
-    // Filter tasks based on selected date
-    const filtered = tasks?.tasks?.filter((task) => task.date === selectedDate);
-    setFilteredTasks(filtered);
-  }, [selectedDate, tasks]);
-
-  const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
-  };
-
-  const isDateAvailable = (date) => {
-    return availableDates && availableDates.includes(date);
-  };
-
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toISOString().split("T")[0];
-  };
 
   return (
     <div className="AddTask container ">
@@ -245,7 +217,7 @@ const AddTask = () => {
       <div className="pt-4 ">
         <div className="card bg-transparent p-0 text-white border-0 rounded-0 lh-0 shadow-none d-block m-auto">
           <div className="card-body task mb-5">
-            <h3 className="title">Add new employee</h3>
+            <h3 className="title">Add new task</h3>
 
             <form onSubmit={handleSubmit(formSubmit)}>
               <div className="row justify-content-center">
@@ -372,77 +344,7 @@ const AddTask = () => {
       </div>
 
       {/* second row of date filtering and tasks lists displaying */}
-      <div className="mt-5">
-        <div className="inputbox3 d-flex p-2  ">
-          <div className="d-block m-auto">
-            <label htmlFor="date" className="text-white fs-5 px-3">
-              Choose your date:
-            </label>
-            <input
-              type="date"
-              id="date"
-              className=""
-              max={maxdate}
-              min={tasks?.tasks?.jod}
-              value={selectedDate}
-              onChange={handleDateChange}
-              style={{
-                backgroundColor: isDateAvailable(selectedDate)
-                  ? "#4CAF50"
-                  : "#F44336",
-                color: "#fff",
-                padding: "10px",
-                borderRadius: "5px",
-                border: "none",
-                outline: "none",
-                fontWeight: "bold",
-                boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-                transition: "background-color 0.3s ease",
-              }}
-            />
-
-            {errors.date?.type === "required" && (
-              <span className="text-sm text-danger">* date is required</span>
-            )}
-          </div>
-        </div>
-
-        {selectedDate && (
-          <main className="table d-block m-auto">
-            <h2 className="table__header d-block m-auto">
-              Tasks for {formatDate(selectedDate)}
-            </h2>
-            {filteredTasks?.length > 0 ? (
-              <section className="table__body">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Description</th>
-                      <th>Task Type</th>
-                      <th>Start Time</th>
-                      <th>Time Taken</th>
-                      <th>End Time</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {filteredTasks.map((task) => (
-                      <tr key={task.description}>
-                        <td>{task.description}</td>
-                        <td>{task.taskType}</td>
-                        <td>{task.startTime}</td>
-                        <td>{task.timeTaken}</td>
-                        <td>{task.endTime}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </section>
-            ) : (
-              <p>No tasks available for this date.</p>
-            )}
-          </main>
-        )}
-      </div>
+      <TaskList/>
     </div>
   );
 };
