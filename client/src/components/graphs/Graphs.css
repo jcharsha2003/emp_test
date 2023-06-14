@@ -1,7 +1,14 @@
 .apexcharts-legend{
-    
+   
     background-color: white;
    height:max-content;
-   
+}
 
+@media (max-width:451px){
+    .apexcharts-legend{
+        display:none;
+    }
+}
+foreignObject{
+    width: 340px;
 }

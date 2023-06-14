@@ -28,11 +28,11 @@ const Graphs = () => {
     const filtered = tasks?.tasks?.filter((task) => task.date === selectedDate);
     setFilteredTasks(filtered);
     if (filtered?.length !== 0) {
-      const notWorkingTasks = filtered.filter((element) => element.taskType === "break");
+      const notWorkingTasks = filtered?.filter((element) => element.taskType === "break");
       setNotWorking(notWorkingTasks);
-      const workingTasks = filtered.filter((element) => element.taskType === "work");
+      const workingTasks = filtered?.filter((element) => element.taskType === "work");
       setWorking(workingTasks);
-      const meetingTasks = filtered.filter((element) => element.taskType === "meeting");
+      const meetingTasks = filtered?.filter((element) => element.taskType === "meeting");
       setMeeting(meetingTasks);
     }
   }, [selectedDate, tasks]);
@@ -61,7 +61,7 @@ const Graphs = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       <div className="row">
         <div className="col-md-6">
           <div className="text-white">
@@ -95,18 +95,19 @@ const Graphs = () => {
                 <h2 className="d-block m-auto">PieChart for {formatDate(selectedDate)}</h2>
                 {filteredTasks?.length > 0 ? (
                   <React.Fragment>
-                    <div className="container-fluid mb-3">
-                      <h3 className="mt-3">Welcome to Piechart </h3>
+                    <div className="container-fluid mb-3 text-white">
+                     
                       <Chart
                         type="pie"
-                        width={500}
-                        height={500}
+                        width={359}
+                        height={359}
                         series={[working.length, notWorking.length, meeting.length]}
                         options={{
-                          title: { text: "Tasks PieChart" },
+                          
                           noData: { text: "Empty Data" },
                           labels: ["Working", "Not Working", "Meeting"],
                         }}
+                     
                       />
                     </div>
                   </React.Fragment>
@@ -151,11 +152,11 @@ const Graphs = () => {
                 {previousFilteredTasks?.length > 0 ? (
                   <React.Fragment>
                     <div className="container-fluid mb-3">
-                      <h3 className="mt-3">Welcome to Piechart </h3>
+                      
                       <Chart
                         type="pie"
-                        width={500}
-                        height={500}
+                        width={359}
+                        height={359}
                         series={[
                           previousFilteredTasks.filter((task) => task.taskType === "work").length,
                           previousFilteredTasks.filter((task) => task.taskType === "break").length,
