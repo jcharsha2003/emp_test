@@ -62,6 +62,7 @@ const AddTask = () => {
           setError(err.message);
         }
       });
+      reset()
   };
   const getUsers = () => {
     axios
@@ -94,7 +95,7 @@ const AddTask = () => {
 
   let formSubmit = (newTask) => {
     try {
-      const startTimeParts = newTask.startTime.split(":"); // Split time string into hours and minutes
+      const startTimeParts = newTask.startTime?.split(":"); //? Split time string into hours and minutes
 
       const startDateTime = new Date(newTask.date);
       startDateTime.setHours(startTimeParts[0]);
@@ -129,33 +130,36 @@ const AddTask = () => {
         timeTaken: newTask.timeTaken,
         endTime: formattedEndTime,
       };
-      if (tasks.tasks.length !== 0) {
-        const isOverlap = tasks.tasks.some((task) => {
-          const taskStartTimeParts = task.startTime.split(":");
+    
+
+      if (tasks?.tasks?.length > 0) {
+       
+        const isOverlap = tasks?.tasks?.some((task) => {
+          const taskStartTimeParts = task.startTime?.split(":");
 
           const taskStartTime = {
             hours: parseInt(taskStartTimeParts[0]),
             minutes: parseInt(taskStartTimeParts[1]),
           };
 
-          const taskEndTimeParts = task.endTime.split(":");
+          const taskEndTimeParts = task.endTime?.split(":");
           const taskEndTime = {
             hours: parseInt(taskEndTimeParts[0]),
             minutes: parseInt(taskEndTimeParts[1]),
           };
 
-          const startDateTimeParts = Task.startTime.split(":");
+          const startDateTimeParts = Task.startTime?.split(":");
           const startDateTime = {
             hours: parseInt(startDateTimeParts[0]),
             minutes: parseInt(startDateTimeParts[1]),
           };
 
-          const endDateTimeParts = Task.endTime.split(":");
+          const endDateTimeParts = Task.endTime?.split(":");
           const endDateTime = {
             hours: parseInt(endDateTimeParts[0]),
             minutes: parseInt(endDateTimeParts[1]),
           };
-
+        
           const isSameDate = task.date === Task.date;
 
           const isOverlap =

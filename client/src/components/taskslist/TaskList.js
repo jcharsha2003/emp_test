@@ -23,7 +23,7 @@ const TaskList = () => {
     let maxdate = yyyy + "-" + mm + "-" + dd;
     let [tasks, setTasks] = useContext(taskContext);
       // table related states
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState(today.toISOString().split("T")[0]);
   const [availableDates, setAvailableDates] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
 
