@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-
+import EmpGraphs from "./components/empgraphs/EmpGraphs";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./components/rootlayout/RootLayout";
 import Home from "./components/home/Home";
@@ -46,6 +46,10 @@ function App() {
         {
           path:"/add-task",
           element:<AddTask/>
+        },
+        {
+          path:"/emp-graphs",
+          element:<EmpGraphs/>
         }
 
 

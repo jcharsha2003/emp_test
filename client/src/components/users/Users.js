@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import Table from "react-bootstrap/Table";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import { useForm } from "react-hook-form";
-
+import { taskContext } from "../../context/TasksContextProvider";
 import "./Users.css";
+import { useNavigate } from "react-router-dom";
 
 const Users = () => {
   let [error, setError] = useState("");
   let [users, setUsers] = useState([]);
   let token = sessionStorage.getItem("token");
-
-
-
+ let [tasks,setTasks]=useContext(taskContext)
+ let navigate = useNavigate();
+ let empGraphs=(user)=>{
+ setTasks(user)
+ navigate("/emp-graphs")
+ }
 
   const getUsers = () => {
     axios
@@ -99,12 +99,17 @@ const Users = () => {
                   <td>{user.department}</td>
                   <td>{user.jod}</td>
                   <td>
-                    <div className="wrapper">
-                      <a href="#" className="alr" onClick={()=>deleteUser(user)}>
+                  <div className="wrapper d-flex  justify-content-around">
+                      <a href="#" className="alr m-2" onClick={()=>deleteUser(user)}>
                         <span className="spanl">Remove</span>
                       </a>
+                      <a href="#" className="alr m-2" onClick={()=>empGraphs(user)}>
+                        <span className="spanl">Details</span>
+                      </a>
                     </div>
+                    
                   </td>
+
                 </tr>
               ))}
             </tbody>

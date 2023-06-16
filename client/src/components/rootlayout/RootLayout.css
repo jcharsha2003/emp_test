@@ -45,6 +45,14 @@ padding: 0;
   background-attachment: fixed;
   height: 100%;
 }
+.emp-graphs{
+  background-image: url(../../images/img4.jpg);
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100%;
+}
 
 .main{
   min-height: calc(100vh - 55px);
