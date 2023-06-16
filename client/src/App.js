@@ -10,6 +10,7 @@ import AddUser from "./components/adduser/AddUser";
 import Users from "./components/users/Users";
 import AddTask from "./components/addtask/AddTask";
 import EmpDashboard from "./components/empdashboard/EmpDashboard";
+import EmpProfile from "./components/empprofile/EmpProfile";
 
 function App() {
 
@@ -50,6 +51,9 @@ function App() {
         {
           path:"/emp-graphs",
           element:<EmpGraphs/>
+        },{
+          path:"/emp-profile",
+          element:<EmpProfile/>
         }
 
 

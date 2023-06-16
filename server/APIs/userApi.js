@@ -22,6 +22,13 @@ userapp.get("/get-user/:username",verifytoken,expressAsyncHandler(async(request,
   let userObj=await userCollection.findOne({username:(request.params.username)})
   response.status(200).send({message:"user list",payload:userObj})
   }))
+  userapp.get("/get-emp/:email",verifytoken,expressAsyncHandler(async(request,response)=>{
+    // get usercollection
+    const userCollection=request.app.get("userCollection")
+  let userObj=await userCollection.findOne({email:(request.params.email)})
+  response.status(200).send({message:"user list",payload:userObj})
+  }))
+
 
 
 
@@ -123,7 +130,16 @@ userapp.post('/user-login',expressAsyncHandler(async(request,response)=>{
  
 }))
 
+// employee edit profile api
 
+
+userapp.put("/update-user",verifytoken,expressAsyncHandler(async(request,response)=>{
+ 
+  const userCollection=request.app.get("userCollection")
+    let modifieduser=request.body;
+     await userCollection.updateOne({email:modifieduser.email},{$set:{...modifieduser}})
+      response.status(200).send({message:"user has been modified successfully"})
+}))
 
 
 

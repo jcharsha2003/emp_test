@@ -64,7 +64,7 @@
 }
 
 
-.btn {
+.btn-ad {
 	position: relative;
 	top: 0;
 	left: 0;
@@ -75,7 +75,7 @@
 	justify-content: center;
 	align-items: center;
 }
-.btn li {
+.btn-ad li {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -99,10 +99,10 @@
 	transition: 0.5s;
 	backdrop-filter: blur(15px);
 }
-.btn:hover li {
+.btn-ad:hover li {
 	letter-spacing: 3px;
 }
-.btn li::before {
+.btn-ad li::before {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -114,11 +114,11 @@
 	transition: 0.5s;
 	filter: blur(0px);
 }
-.btn:hover li::before {
+.btn-ad:hover li::before {
 	transform: skewX(45deg) translate(200px);
 }
 
-.btn::before {
+.btn-ad::before {
 	content: "";
 	position: absolute;
 	left: 50%;
@@ -132,13 +132,13 @@
 	transition-delay: 0.5;
 }
 
-.btn:hover::before /*lightup button*/ {
+.btn-ad:hover::before /*lightup button*/ {
 	bottom: 0;
 	height: 50%;
 	width: 80%;
 	border-radius: 30px;
 }
-.btn::after {
+.btn-ad::after {
 	content: "";
 	position: absolute;
 	left: 50%;
@@ -151,14 +151,14 @@
 	transition: 0.5s;
 	transition-delay: 0.5;
 }
-.btn:hover::after /*lightup button*/ {
+.btn-ad:hover::after /*lightup button*/ {
 	top: 0;
 	height: 50%;
 	width: 80%;
 	border-radius: 30px;
 }
-.btn::before, /* 3*/
- .btn::after {
+.btn-ad::before, /* 3*/
+ .btn-ad::after {
 	background: #1eff45;
 	box-shadow: 0 0 5px #1eff45, 0 0 15px #1eff45, 0 0 30px #1eff45,
 		0 0 60px #1eff45;

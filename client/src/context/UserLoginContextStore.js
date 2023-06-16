@@ -33,7 +33,7 @@ function UserLoginContextStore({children}){
         setUserLoginStatus(false)
     }
     return (
-        <loginContext.Provider value={[currentUser,error,userLoginStatus,loginUser,logoutUser,role]}>{children}</loginContext.Provider>
+        <loginContext.Provider value={[currentUser,error,userLoginStatus,loginUser,logoutUser,role,setCurrentUser]}>{children}</loginContext.Provider>
     )
     
 }

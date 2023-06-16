@@ -88,7 +88,7 @@ const AddTask = () => {
           setError(err.message);
         }
       });
-    // reset();
+    reset();
   };
   useEffect(() => {
     getUsers();
@@ -337,7 +337,7 @@ const AddTask = () => {
                 </div>
               </div>
               <div className="b">
-                <button type="submit" className="btn d-block m-auto">
+                <button type="submit" className="btn btn-ad d-block m-auto">
                   <li>Submit</li>
                 </button>
               </div>

@@ -8,9 +8,7 @@ import Graphs from '../graphs/Graphs';
 const EmpGraphs = () => {
 
   let [tasks,setTasks]=useContext(taskContext)
-  useEffect(()=>{
- console.log(tasks)
-  },[])
+  
   let navigate = useNavigate();
   let employees=()=>{
     navigate("/users")

@@ -103,6 +103,15 @@ function NavbarMain() {
                         Add Task
                       </Link>
                     </li>
+                    <li className="nav-item dropdown">
+                      <Link
+                        className="nav-link text-white"
+                        style={{ padding: "1.3rem" }}
+                        to="/emp-profile"
+                      >
+                        Profile
+                      </Link>
+                    </li>
                   </ul>
                 )
               )}
