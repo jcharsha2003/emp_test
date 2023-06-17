@@ -139,6 +139,8 @@ userapp.put("/update-user",verifytoken,expressAsyncHandler(async(request,respons
  
   const userCollection=request.app.get("userCollection")
     let modifieduser=request.body;
+    let hashedPassword= await bcryptjs.hash(modifieduser.password,6)
+    modifieduser.password=hashedPassword;
      await userCollection.updateOne({email:modifieduser.email},{$set:{...modifieduser}})
       response.status(200).send({message:"user has been modified successfully"})
 }))

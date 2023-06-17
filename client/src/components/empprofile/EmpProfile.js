@@ -3,7 +3,7 @@ import axios from "axios";
 import { taskContext } from "../../context/TasksContextProvider";
 import { useForm } from "react-hook-form";
 import { loginContext } from "../../context/loginContext";
-import Button from "react-bootstrap/Button";
+
 
 import Modal from "react-bootstrap/Modal";
 import "./EmpProfile.css";
@@ -19,7 +19,7 @@ const EmpProfile = () => {
     loginUser,
     logoutUser,
     role,
-    setCurrentUser,
+    
   ] = useContext(loginContext);
   let {
     register,
@@ -72,33 +72,40 @@ const EmpProfile = () => {
   };
   //   saveModifiedUser
   const saveModifiedUser = () => {
-    handleClose();
-    let modifieduser = getValues();
+    
+    if(Object.keys(errors).length===0){
+      let modifieduser = getValues();
 
-    axios
-      .put(`http://localhost:5000/user-api/update-user`, modifieduser, {
-        headers: { Authorization: "Bearer " + token },
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          getUsers();
-        }
-      })
-      .catch((err) => {
-        if (err.response) {
-          setError(err.message);
-          console.log(err.response);
-        } else if (err.request) {
-          setError(err.message);
-        } else {
-          setError(err.message);
-        }
-      });
+      axios
+        .put(`http://localhost:5000/user-api/update-user`, modifieduser, {
+          headers: { Authorization: "Bearer " + token },
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            getUsers();
+          }
+        })
+        .catch((err) => {
+          if (err.response) {
+            setError(err.message);
+            console.log(err.response);
+          } else if (err.request) {
+            setError(err.message);
+          } else {
+            setError(err.message);
+          }
+        });
+  
+        handleClose();
+    }
+    
+   
   };
 
   useEffect(() => {
     getUsers();
   }, []);
+ 
 
   return (
     <div className="container">
@@ -189,6 +196,32 @@ const EmpProfile = () => {
                     </p>
                   )}
                 </div>
+                <div className="inputbox4 form-floating">
+                    <i className="fa-solid fa-lock"></i>
+                    <input
+                      type="password"
+                      id="password"
+                      className="form-control "
+                      placeholder="xyz"
+                      {...register("password", {
+                        required: true,
+                        minLength: 4,
+                      })}
+                    ></input>
+                    <label htmlFor="password" className="text-dark">
+                      password
+                    </label>
+
+                    {errors.password?.type === "required" && (
+                      <p className=" text-danger">*enter your password</p>
+                    )}
+                    {errors.password?.type === "minLength" && (
+                      <p className=" text-danger">
+                        *minimum 4 password word is required
+                      </p>
+                    )}
+                  </div>
+
 
                 {/* second row   */}
 
@@ -275,16 +308,14 @@ const EmpProfile = () => {
                 </div>
               </div>
             </div>
+            <div className="d-flex flex-row-reverse">
+            <button className="btn btn-secondary mx-1"  onClick={handleClose}>Close</button>
+          <button className="btn btn-primary mx-1" type="submit">Save</button>
+            </div>
+            
           </form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={saveModifiedUser}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
+      
       </div>
         
       </Modal>
