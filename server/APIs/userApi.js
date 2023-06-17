@@ -16,12 +16,14 @@ userapp.get("/get-users",verifytoken,expressAsyncHandler(async(request,response)
     
   }))
 
-userapp.get("/get-user/:username",verifytoken,expressAsyncHandler(async(request,response)=>{
+userapp.get("/get-user/:email",verifytoken,expressAsyncHandler(async(request,response)=>{
     // get usercollection
     const userCollection=request.app.get("userCollection")
-  let userObj=await userCollection.findOne({username:(request.params.username)})
+  let userObj=await userCollection.findOne({email:(request.params.email)})
   response.status(200).send({message:"user list",payload:userObj})
   }))
+
+  
   userapp.get("/get-emp/:email",verifytoken,expressAsyncHandler(async(request,response)=>{
     // get usercollection
     const userCollection=request.app.get("userCollection")
@@ -47,20 +49,20 @@ userapp.post("/create-user",verifytoken,expressAsyncHandler(async(request,respon
   
   }))
 
-userapp.put("/update-task/:username",verifytoken,expressAsyncHandler(async(request,response)=>{
+userapp.put("/update-task/:email",verifytoken,expressAsyncHandler(async(request,response)=>{
  
     // get userCollection
     const userCollection=request.app.get("userCollection")
     let task=request.body;
-     await userCollection.updateOne({username:(request.params.username)},{$addToSet:{tasks:task}})
+     await userCollection.updateOne({email:(request.params.email)},{$addToSet:{tasks:task}})
       response.status(200).send({message:"task has been added successfully"})
     
   }))
-userapp.delete("/delete-user/:username",verifytoken,expressAsyncHandler(async(request,response)=>{
+userapp.delete("/delete-user/:email",verifytoken,expressAsyncHandler(async(request,response)=>{
    
     // get userCollection
    const userCollection=request.app.get("userCollection")
-     await userCollection.deleteOne({username:request.params.username})
+     await userCollection.deleteOne({email:request.params.email})
     
       response.status(200).send({message:"user has been deleted successfully"})
    

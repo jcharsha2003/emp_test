@@ -131,7 +131,7 @@ const AddTask = () => {
         timeTaken: newTask.timeTaken,
         endTime: formattedEndTime,
       };
-      console.log(Task)
+    
     
 
       if (tasks?.tasks?.length > 0) {
