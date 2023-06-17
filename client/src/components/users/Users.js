@@ -103,6 +103,7 @@ const Users = () => {
                       <a href="#" className="alr m-2" onClick={()=>deleteUser(user)}>
                         <span className="spanl">Remove</span>
                       </a>
+                      
                       <a href="#" className="alr m-2" onClick={()=>empGraphs(user)}>
                         <span className="spanl">Details</span>
                       </a>
