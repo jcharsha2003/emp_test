@@ -1,0 +1,28 @@
+version: '3'
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - my-network
+    depends_on:
+      - server
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    env_file:
+      - ./server/.env
+    ports:
+      - 5000:5000
+    volumes:
+      - ./server/data:/app/data
+    networks:
+      - my-network
+
+networks:
+  my-network:

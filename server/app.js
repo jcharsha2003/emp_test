@@ -21,7 +21,7 @@ const mclient = require("mongodb").MongoClient;
 
 // connect to mongodb server
 mclient
-  .connect(process.env.DB_STRING, { useNewUrlParser: true
+  .connect(`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_CLUSTER}/?retryWrites=true&w=majority`, { useNewUrlParser: true
   })
   .then((dbRef) => {
 
