@@ -9,12 +9,12 @@
 ### Step-by-Step Guide to Deploying a Container and Running it Using Docker
 
 ### 1. Build the Docker image:
-#### docker-compose build
+# docker-compose build
 ### This command will build the Docker image based on the instructions specified in your `Dockerfile` and `docker-compose.yaml` files. It will pull the necessary ### dependencies, set up the environment, and package your application into an image.
 
 ### 2. Start the container:
-#### docker-compose down
-#### docker-compose up
+# docker-compose down
+# docker-compose up
 ### This command will start the container based on the image you built. It will create and run the necessary services defined in your `docker-compose.yaml` file. The output will be displayed in the console, and you should see logs from your running application.
 
 ### 3. Access your application:
@@ -27,7 +27,7 @@
 
 ### 5. Remove the container:
 ### If you want to remove the container and clean up resources, run the following command:
-#### docker-compose down
+# docker-compose down
 ### This will stop and remove the containers defined in your `docker-compose.yaml` file.
 
 ### These steps should help you deploy and run your containerized MERN application using Docker.
