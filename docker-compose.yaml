@@ -1,4 +1,5 @@
-version: '3'
+version: '3.2'
+
 services:
   client:
     build:
@@ -21,6 +22,53 @@ services:
       - 5000:5000
     volumes:
       - ./server/data:/app/data
+    networks:
+      - my-network
+
+  nginx-proxy-manager:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: nginx-proxy-manager
+    ports:
+      - 80:80
+      - 443:443
+      - 81:81
+    volumes:
+      - ./nginx-proxy-manager/data:/data
+      - ./nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+    environment:
+      - DATA_PATH=/data
+      - CERTIFICATE_PATH=/etc/letsencrypt/live
+      - DNS_ENABLED=true
+    restart: unless-stopped
+    networks:
+      - my-network
+
+  duckdns:
+    image: linuxserver/duckdns
+    container_name: duckdns
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+      - SUBDOMAINS=emp2.duckdns.org
+      - TOKEN=d1c9029b-7b84-441f-b107-3a7b40bd4f78
+      - LOG_FILE=true
+    restart: unless-stopped
+    volumes:
+      - ./duckdns/config:/config
+    networks:
+      - my-network
+
+  db:
+    image: 'jc21/mariadb-aria:latest'
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 'npm'
+      MYSQL_DATABASE: 'npm'
+      MYSQL_USER: 'npm'
+      MYSQL_PASSWORD: 'npm'
+    volumes:
+      - ./mysql:/var/lib/mysql
     networks:
       - my-network
 
