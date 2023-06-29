@@ -1,11 +1,11 @@
 import axios from "axios";
 import Tilt from "react-vanilla-tilt";
 import React from "react";
-import { useState } from "react";
+import { useState ,useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import "./AddUser.css";
 import { useForm } from "react-hook-form";
-
+import { domainContext } from "../../context/DomainContextProvider";
 const AddUser = () => {
   let [error, setError] = useState("");
   let {
@@ -15,12 +15,13 @@ const AddUser = () => {
     reset,
   } = useForm();
   const navigate = useNavigate();
+  let [domain,setDomain]=useContext(domainContext)
 
   let formSubmit = (newUser) => {
     newUser = { ...newUser, role: "employee", tasks: [] };
 
     axios
-      .post("http://localhost:5000/user-api/add-user", newUser)
+      .post(`${domain}:5000/user-api/add-user`, newUser)
       .then((response) => {
         if (response.status === 201) {
           navigate("/users");

@@ -4,11 +4,12 @@ import { taskContext } from "../../context/TasksContextProvider";
 import { useForm } from "react-hook-form";
 import { loginContext } from "../../context/loginContext";
 
-
+import {domainContext} from "../../context/DomainContextProvider"
 import Modal from "react-bootstrap/Modal";
 import "./EmpProfile.css";
 
 const EmpProfile = () => {
+  let [domain,setDomain]=useContext(domainContext)
   let [tasks, setTasks] = useContext(taskContext);
   let [error, setError] = useState("");
   let token = sessionStorage.getItem("token");
@@ -36,7 +37,7 @@ const EmpProfile = () => {
 
   const getUsers = () => {
     axios
-      .get(`http://localhost:5000/user-api/get-emp/${currentUser.email}`, {
+      .get(`${domain}:5000/user-api/get-emp/${currentUser.email}`, {
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {
@@ -77,7 +78,7 @@ const EmpProfile = () => {
       let modifieduser = getValues();
 
       axios
-        .put(`http://localhost:5000/user-api/update-user`, modifieduser, {
+        .put(`${domain}:5000/user-api/update-user`, modifieduser, {
           headers: { Authorization: "Bearer " + token },
         })
         .then((response) => {

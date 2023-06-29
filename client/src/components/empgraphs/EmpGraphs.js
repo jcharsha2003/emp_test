@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 import "./EmpGraphs.css"
 import Graphs from '../graphs/Graphs';
 
-
+import {domainContext} from "../../context/DomainContextProvider"
 
 
 import axios from "axios";
 const EmpGraphs = () => {
 
  
-  
+  let [domain,setDomain]=useContext(domainContext)
   let navigate = useNavigate();
   let employees=()=>{
     navigate("/users")
@@ -68,7 +68,7 @@ const EmpGraphs = () => {
 
   const getUsers = () => {
     axios
-      .get(`http://localhost:5000/user-api/get-user/${tasks?.email}`, {
+      .get(`${domain}:5000/user-api/get-user/${tasks?.email}`, {
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {

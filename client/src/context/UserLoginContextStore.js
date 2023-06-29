@@ -1,15 +1,17 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import {loginContext} from "./loginContext"
 import axios from 'axios'
+
 function UserLoginContextStore({children}){
     let [currentUser,setCurrentUser]=useState({})
     let[role,setRole]=useState("")
     let[error,setError]=useState("")
     let[userLoginStatus,setUserLoginStatus]=useState(false)
- 
+    let url=window.location.href;
+    let baseURL = url.split("/").slice(0, 3).join("/")
     // userlogin 
     const loginUser=(userCredObj)=>{
-        axios.post("http://localhost:5000/user-api/user-login",userCredObj)
+        axios.post(`${baseURL}:5000/user-api/user-login`,userCredObj)
         .then(response=>{
             if(response.data.message==="success"){
                 setCurrentUser({...response.data.user})

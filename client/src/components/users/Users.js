@@ -2,9 +2,11 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { taskContext } from "../../context/TasksContextProvider";
 import "./Users.css";
+import {domainContext} from "../../context/DomainContextProvider"
 import { useNavigate } from "react-router-dom";
 
 const Users = () => {
+  let [domain,setDomain]=useContext(domainContext)
   let [error, setError] = useState("");
   let [users, setUsers] = useState([]);
   let token = sessionStorage.getItem("token");
@@ -17,7 +19,7 @@ const Users = () => {
 
   const getUsers = () => {
     axios
-      .get("http://localhost:5000/user-api/get-users", {
+      .get(`${domain}:5000/user-api/get-users`, {
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {
@@ -45,7 +47,7 @@ const Users = () => {
   
     
     axios
-      .delete(`http://localhost:5000/user-api/delete-user/${user.email}`,{
+      .delete(`${domain}:5000/user-api/delete-user/${user.email}`,{
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {
