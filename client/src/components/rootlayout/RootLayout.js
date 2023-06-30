@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import NavbarMain from "../navbar/NavbarMain";
-// import { domainContext } from "../../context/DomainContextProvider";
+import { domainContext } from "../../context/DomainContextProvider";
 import "./RootLayout.css";
 import { Outlet,useLocation } from "react-router-dom";
 import { useState } from "react";
@@ -18,12 +18,13 @@ function RootLayout() {
    }
   },[location])
    
-  // let [domain,setDomain]=useContext(domainContext)
-  // useEffect(()=>{
-  //   let url=window.location.href;
-  //   let baseURL = url.split("/").slice(0, 3).join("/")
-  //   setDomain(baseURL)
-  // },[location])
+  let [domain,setDomain]=useContext(domainContext)
+  useEffect(()=>{
+    let url=window.location.href;
+    let baseURL = url.split("/").slice(0, 3).join("/")
+    setDomain(baseURL.replace("://","://server."))
+    console.log(domain)
+  },[location])
         
 
   return (

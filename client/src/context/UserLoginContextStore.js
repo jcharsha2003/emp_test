@@ -1,17 +1,18 @@
-import React,{useState,useContext} from 'react'
+import React,{useState,useContext, useEffect} from 'react'
 import {loginContext} from "./loginContext"
 import axios from 'axios'
-import {domainContext} from "./DomainContextProvider"
+
 function UserLoginContextStore({children}){
     let [currentUser,setCurrentUser]=useState({})
     let[role,setRole]=useState("")
     let[error,setError]=useState("")
     let[userLoginStatus,setUserLoginStatus]=useState(false)
-    let [domain,setDomain]=useContext(domainContext)
+    
     let url=window.location.href;
     let baseURL = url.split("/").slice(0, 3).join("/")
     let subdomain=baseURL.replace("://","://server.")
-    setDomain(subdomain)
+    
+    
     // userlogin 
     const loginUser=(userCredObj)=>{
         axios.post(`${subdomain}/user-api/user-login`,userCredObj)
