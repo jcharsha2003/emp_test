@@ -21,7 +21,7 @@ const AddUser = () => {
     newUser = { ...newUser, role: "employee", tasks: [] };
 
     axios
-      .post(`${domain}:5000/user-api/add-user`, newUser)
+      .post(`${domain}/user-api/add-user`, newUser)
       .then((response) => {
         if (response.status === 201) {
           navigate("/users");

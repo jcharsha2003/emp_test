@@ -59,7 +59,7 @@ const TaskList = () => {
 
   const getUsers = () => {
     axios
-      .get(`${domain}:5000/user-api/get-user/${currentUser.email}`, {
+      .get(`${domain}/user-api/get-user/${currentUser.email}`, {
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {

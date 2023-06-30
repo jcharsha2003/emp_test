@@ -38,7 +38,7 @@ const AddTask = () => {
   const putTask = (newTask) => {
     axios
       .put(
-        `${domain}:5000/user-api/update-task/${currentUser.email}`,
+        `${domain}/user-api/update-task/${currentUser.email}`,
         newTask,
         {
           headers: { Authorization: "Bearer " + token },
@@ -67,7 +67,7 @@ const AddTask = () => {
   };
   const getUsers = () => {
     axios
-      .get(`${domain}:5000/user-api/get-user/${currentUser.email}`, {
+      .get(`${domain}/user-api/get-user/${currentUser.email}`, {
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {
