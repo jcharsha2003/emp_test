@@ -19,7 +19,7 @@ const Users = () => {
 
   const getUsers = () => {
     axios
-      .get(`${domain}/user-api/get-users`, {
+      .get(`/user-api/get-users`, {
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {
@@ -47,7 +47,7 @@ const Users = () => {
   
     
     axios
-      .delete(`${domain}/user-api/delete-user/${user.email}`,{
+      .delete(`/user-api/delete-user/${user.email}`,{
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {

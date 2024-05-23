@@ -7,9 +7,10 @@ import { useState } from "react";
 
 function RootLayout() {
    let location=useLocation();
-   let [path,setPath]=useState("none");
+   let [path,setPath]=useState("home");
    useEffect(()=>{
     let url=location.pathname.replace("/","")
+    console.log(url)
     if(url.length===0){
     setPath("home")
    }
@@ -18,13 +19,13 @@ function RootLayout() {
    }
   },[location])
    
-  let [domain,setDomain]=useContext(domainContext)
-  useEffect(()=>{
-    let url=window.location.href;
-    let baseURL = url.split("/").slice(0, 3).join("/")
-    setDomain(baseURL.replace("://","://server."))
-    console.log(domain)
-  },[location])
+  // let [domain,setDomain]=useContext(domainContext)
+  // useEffect(()=>{
+  //   let url=window.location.href;
+  //   let baseURL = url.split("/").slice(0, 3).join("/")
+  //   setDomain(baseURL.replace("://","://server."))
+  //   console.log(domain)
+  // },[location])
         
 
   return (

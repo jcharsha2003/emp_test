@@ -26,7 +26,7 @@ mclient
   .then((dbRef) => {
 
     // access user database
-    let usersdbObj = dbRef.db("usersdb");
+    let usersdbObj = dbRef.db("userdb");
     let userCollection = usersdbObj.collection("usercollection");
     
 

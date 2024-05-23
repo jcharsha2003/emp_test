@@ -37,7 +37,7 @@ const EmpProfile = () => {
 
   const getUsers = () => {
     axios
-      .get(`${domain}/user-api/get-emp/${currentUser.email}`, {
+      .get(`/user-api/get-emp/${currentUser.email}`, {
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {
@@ -78,7 +78,7 @@ const EmpProfile = () => {
       let modifieduser = getValues();
 
       axios
-        .put(`${domain}/user-api/update-user`, modifieduser, {
+        .put(`/user-api/update-user`, modifieduser, {
           headers: { Authorization: "Bearer " + token },
         })
         .then((response) => {

@@ -68,7 +68,7 @@ const EmpGraphs = () => {
 
   const getUsers = () => {
     axios
-      .get(`${domain}/user-api/get-user/${tasks?.email}`, {
+      .get(`/user-api/get-user/${tasks?.email}`, {
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {
