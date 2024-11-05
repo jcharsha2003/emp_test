@@ -21,7 +21,7 @@ const AddUser = () => {
     newUser = { ...newUser, role: "employee", tasks: [] };
 
     axios
-      .post(`/user-api/add-user`, newUser)
+      .post(`https://emp-test.onrender.com/user-api/add-user`, newUser)
       .then((response) => {
         if (response.status === 201) {
           navigate("/users");
