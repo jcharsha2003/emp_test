@@ -38,7 +38,7 @@ const AddTask = () => {
   const putTask = (newTask) => {
     axios
       .put(
-        `/user-api/update-task/${currentUser.email}`,
+        `https://emp-test.onrender.com/user-api/update-task/${currentUser.email}`,
         newTask,
         {
           headers: { Authorization: "Bearer " + token },
@@ -67,7 +67,7 @@ const AddTask = () => {
   };
   const getUsers = () => {
     axios
-      .get(`/user-api/get-user/${currentUser.email}`, {
+      .get(`https://emp-test.onrender.com/user-api/get-user/${currentUser.email}`, {
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {
