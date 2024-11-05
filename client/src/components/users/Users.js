@@ -19,7 +19,7 @@ const Users = () => {
 
   const getUsers = () => {
     axios
-      .get(`/user-api/get-users`, {
+      .get(`https://emp-test.onrender.com/user-api/get-users`, {
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {
@@ -47,7 +47,7 @@ const Users = () => {
   
     
     axios
-      .delete(`/user-api/delete-user/${user.email}`,{
+      .delete(`https://emp-test.onrender.com/user-api/delete-user/${user.email}`,{
         headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {
