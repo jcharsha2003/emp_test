@@ -24,7 +24,12 @@ const verifyToken=(request,response,next)=>{
        
 
     }
-    
+// MONGO_USERNAME=admin
+// MONGO_PASSWORD=admin
+
+// MONGO_CLUSTER=cluster0.kdptbbe.mongodb.net
+// MY_EMAIL=yunoastha3@gmail.com
+// MY_PASSWORD=pxhcostmjjmzmkwv
 
     // if token is valid,allow to access protect route
     // else,ask to login again
